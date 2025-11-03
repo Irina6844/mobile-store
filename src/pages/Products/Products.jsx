@@ -1,11 +1,31 @@
-import React from 'react'
-
+import React, { useEffect } from "react";
+import { useState } from "react";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import {Box} from '@mui/material'
 const Products = () => {
-  return (
-    <div>
-      Products
-    </div>
-  )
-}
+  const [products,setProducts] = useState([])
 
-export default Products
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+    .then((res) => res.json())
+    .then((res) => setProducts(res))
+  }, [])
+
+  return (
+<Box >
+  <Box sx={{display:'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px'}}>
+
+  {
+    products.map((product) => <ProductCard key={product.id} product={product}/>)
+  }
+
+  </Box>
+  
+</Box>
+
+
+  )
+   
+};
+
+export default Products;
