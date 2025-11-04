@@ -1,66 +1,81 @@
-import React from 'react'
+import React from "react";
 
-import {AppBar,Box,Toolbar,IconButton,Typography,Menu,Container,Avatar,Button,Tooltip,MenuItem} from '@mui/material';
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Container,
+  Button,
+} from "@mui/material";
 
-import { NavLink } from 'react-router-dom';
-
+import { styled } from "@mui/material/styles";
+import Badge, { badgeClasses } from "@mui/material/Badge";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { NavLink } from "react-router-dom";
 
 const pages = [
-  {
-  title: 'Home', 
-  path: '/'
-},
-{
-  title: 'Products', 
-  path: '/products'
-}
+  { title: "Home", path: "/" },
+  { title: "Products", path: "/products" },
 ];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+const CartBadge = styled(Badge)`
+  & .${badgeClasses.badge} {
+    top: -12px;
+    right: -6px;
+  }
+`;
 
 function Header() {
-
   return (
-    <AppBar sx={{backgroundColor : 'orange', mb: '30px'}}  position="sticky">
-      <Container maxWidth='xl'>
+    <AppBar sx={{ backgroundColor: "orange", mb: "30px" }} position="sticky">
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
             noWrap
             component={NavLink}
-           to={'/'}
+            to={"/"}
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
-            Motorolla
+            Mobile APP
           </Typography>
-      
-          <Box sx={{ flexGrow: 1, display: 'flex', gap: '20px'}}>
+
+          <Box sx={{ flexGrow: 1, display: "flex", gap: "20px" }}>
             {pages.map((page) => (
               <Button
-              component={NavLink}
-              to={page.path}
-               variant='contained'
+                component={NavLink}
+                to={page.path}
+                variant="contained"
                 key={page.title}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page.title}
               </Button>
             ))}
           </Box>
-          
+
+          <Box 
+          component={NavLink}
+          to='/carts'
+          >
+            <IconButton>
+              <ShoppingCartIcon fontSize="small" />
+              <CartBadge badgeContent={2} color="primary" overlap="circular" />
+            </IconButton>
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
 }
 export default Header;
-
-
-
