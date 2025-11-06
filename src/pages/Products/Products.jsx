@@ -2,8 +2,9 @@ import React from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { Box } from "@mui/material";
 
+const Products = ({ products, addToCart }) => {
+  console.log(products);
 
-const Products = ({products}) => {
   return (
     <Box>
       <Box
@@ -16,7 +17,11 @@ const Products = ({products}) => {
         }}
       >
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard
+            key={product.id}
+            product={product}
+            addToCart={addToCart}
+          />
         ))}
       </Box>
     </Box>

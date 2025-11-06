@@ -17,7 +17,16 @@ baseURL:'https://fakestoreapi.com'
 
 
 function App() {
-  const [products, setProducts] = useState([]);
+const [products, setProducts] = useState([]);
+const [cart, setCart] = useState([])
+
+
+const addToCart = (item) => {
+setCart((prev) => {
+  return [...prev, item]
+})
+
+}
 
   useEffect(() => {
     instance.get("/products")
@@ -31,9 +40,9 @@ function App() {
         <Route path="/" element={<Layout />} >
 
         <Route index element={<Home />} />
-         <Route path="/products" element={<Products products={products} />} />
+        <Route path="/products" element={<Products products={products}  addToCart= {addToCart}/>} />
          <Route path="/products/:id" element={<Product />} />
-         <Route path="/carts" element={<Cart/>}/>
+         <Route path="/carts" element={<Cart cart={cart}/>}/>
 
        </Route>
 

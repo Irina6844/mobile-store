@@ -64,10 +64,7 @@ function Header() {
             ))}
           </Box>
 
-          <Box 
-          component={NavLink}
-          to='/carts'
-          >
+          <Box component={NavLink} to="/carts">
             <IconButton>
               <ShoppingCartIcon fontSize="small" />
               <CartBadge badgeContent={2} color="primary" overlap="circular" />
