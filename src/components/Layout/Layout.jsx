@@ -3,10 +3,10 @@ import Header from "../Header/Header";
 import { Outlet } from "react-router-dom";
 import { Container } from "@mui/material";
 
-const Layout = () => {
+const Layout = ({cartLength}) => {
   return (
     <>
-      <Header />
+      <Header cartLength={cartLength} />
 
       <Container maxWidth='xl'>
         <Outlet />

@@ -3,7 +3,7 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import { Box } from "@mui/material";
 
 const Products = ({ products, addToCart }) => {
-  console.log(products);
+  
 
   return (
     <Box>

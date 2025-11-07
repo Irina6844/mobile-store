@@ -1,8 +1,8 @@
 .cartParent {
   display: flex;
-  flex-wrap: wrap;
+ flex-direction: column;
   gap: 20px;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 }
 
@@ -12,7 +12,56 @@
   gap: 10px;
   align-items: center;
   border-radius: 40px;
-  max-width: 400px;
+  max-width: 500px;
   padding: 20px;
   background-color: #0d8d71;
+}
+
+.main{
+  display: flex;
+  justify-content: space-between;
+
+  align-items:center;
+  gap: 20px;
+  width: 100%;
+}
+
+.descrip {
+  color: black;
+  font-size: 18px;
+  text-align: justify;
+}
+
+.button{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+}
+
+.pricee{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.initPrice{
+  color: green;
+  font-size: 50px;
+  font-style: italic;
+}
+
+.total {
+  font-size: 70px;
+ color: rgb(83, 16, 170);
+ font-weight: bold;
+ font-style: italic;
+}
+
+.cartParent .empty{
+  font-size: 70px;
+  color: red;
+  font-weight: bold;
+  transition: all 0.8s;
+  
 }
