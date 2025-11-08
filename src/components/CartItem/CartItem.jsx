@@ -36,7 +36,7 @@ updateCart(count, cart.id)
         </Button>
       </div>
       <div className="initPrice">
-        <h5>{cart.initPrice.toFixed(3)}$</h5>
+        <h5>{cart.initPrice.toFixed(2)}$</h5>
       </div>
        
     </Box>

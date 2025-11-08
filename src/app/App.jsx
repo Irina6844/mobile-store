@@ -18,6 +18,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
 
+
   const cartLength = cart.length
   const addToCart = (item) => {
     let bool = false;

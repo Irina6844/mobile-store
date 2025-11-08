@@ -15,7 +15,7 @@ const Cart = ({ cart , updateCart}) => {
       <CartItem key={c.id} cart={c} updateCart={updateCart}/>
     ))}
     {cart.length > 0 ? (
-      <Box className="total">Total: {total.toFixed(3)}$</Box>
+      <Box className="total">Total: {total.toFixed(2)}$</Box>
     ) : (
       <p className="empty">Your cart is empty !</p>
     )}
