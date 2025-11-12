@@ -1,0 +1,16 @@
+.lineBtn{
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background: transparent;
+    transition: all 0.5s;
+    border: 2px solid transparent;
+    font-weight: bold;
+}
+
+.lineBtn:hover{
+
+    background: black;
+    color: aliceblue;
+}
