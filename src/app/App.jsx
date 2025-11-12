@@ -9,6 +9,7 @@ import Cart from "../pages/Cart/Cart";
 import Product from "../pages/Product/Product";
 
 import "./styles/App.css";
+import { useRef } from "react";
 
 export const instance = axios.create({
   baseURL: "https://fakestoreapi.com",
@@ -17,9 +18,17 @@ export const instance = axios.create({
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const obj = useRef(false);
 
+  const cartLength = cart.length;
+  useEffect(() => {
+    if (obj.current) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
 
-  const cartLength = cart.length
+    obj.current=true
+  }, [cart]);
+
   const addToCart = (item) => {
     let bool = false;
 
@@ -48,19 +57,21 @@ function App() {
     }
   };
 
-const updateCart  = (count, id) => {
-setCart(cart.map((c) => {
-if (c.id === id ){
-  return {
-    ...c,
-    count:count,
-    initPrice: c.price * count
-  }
-} else {
-  return c
-}
-}))
-}
+  const updateCart = (count, id) => {
+    setCart(
+      cart.map((c) => {
+        if (c.id === id) {
+          return {
+            ...c,
+            count: count,
+            initPrice: c.price * count,
+          };
+        } else {
+          return c;
+        }
+      })
+    );
+  };
 
   useEffect(() => {
     instance.get("/products").then((res) =>
@@ -77,14 +88,17 @@ if (c.id === id ){
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layout  cartLength={cartLength}/>}>
+        <Route path="/" element={<Layout cartLength={cartLength} />}>
           <Route index element={<Home />} />
           <Route
             path="/products"
             element={<Products products={products} addToCart={addToCart} />}
           />
           <Route path="/products/:id" element={<Product />} />
-          <Route path="/carts" element={<Cart cart={cart}  updateCart={updateCart}/>} />
+          <Route
+            path="/carts"
+            element={<Cart cart={cart} updateCart={updateCart} />}
+          />
         </Route>
       </Routes>
     </>

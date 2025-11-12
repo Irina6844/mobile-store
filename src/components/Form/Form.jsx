@@ -1,10 +1,15 @@
 import { Box, TextField, Button, Modal } from "@mui/material";
 import { validationSchema } from "../../schema/validations.js";
 import { Formik, ErrorMessage } from "formik";
-
+import BasicModal from "../Modal/Modal.jsx";
+import {useState} from 'react'
 
 const Form = () => {
+  const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
   return (
+    <>
     <Formik
       initialValues={{
         name: "",
@@ -17,7 +22,7 @@ const Form = () => {
       validationSchema={validationSchema}
       onSubmit={(values) => {
         console.log(values);
-         handleClose()
+         handleOpen()
       }}
     >
       {({ values, handleChange, handleSubmit }) => (
@@ -98,6 +103,9 @@ const Form = () => {
         </Box>
       )}
     </Formik>
+    <BasicModal handleOpen={handleOpen} handleClose={handleClose} open={open} />
+    </>
+   
   );
 };
 
