@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import {
   AppBar,
@@ -14,6 +14,7 @@ import { styled } from "@mui/material/styles";
 import Badge, { badgeClasses } from "@mui/material/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { NavLink } from "react-router-dom";
+import { productContext } from "../../app/provider/provider";
 
 const pages = [
   { title: "Home", path: "/" },
@@ -27,7 +28,8 @@ const CartBadge = styled(Badge)`
   }
 `;
 
-function Header({cartLength}) {
+function Header() {
+  const {cartLength}=useContext(productContext)
   return (
     <AppBar sx={{ backgroundColor: "orange", mb: "30px" }} position="sticky">
       <Container maxWidth="xl">

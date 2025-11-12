@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { Box } from "@mui/material";
+import { productContext } from "../../app/provider/provider";
 
-const Products = ({ products, addToCart }) => {
+const Products = () => {
   
-
+const { products, addToCart } = useContext(productContext)
   return (
     <Box>
       <Box
